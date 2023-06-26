@@ -52,8 +52,12 @@
                       <Component id="jLabel3" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnGuardar" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="btnBack" min="-2" pref="112" max="-2" attributes="0"/>
+                                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                                  <Component id="btnGuardar" min="-2" pref="112" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
@@ -64,9 +68,9 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtEditPass" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cmbEditRol" alignment="0" pref="203" max="32767" attributes="0"/>
                                       <Component id="txtEditUser" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtEditPass" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -97,7 +101,10 @@
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="59" max="32767" attributes="0"/>
-                  <Component id="btnGuardar" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnGuardar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="btnBack" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -161,8 +168,6 @@
             <Property name="text" type="java.lang.String" value="Rol"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtEditPass">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtEditUser">
         </Component>
         <Component class="javax.swing.JButton" name="btnGuardar">
@@ -174,6 +179,22 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtEditPass">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnBack">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

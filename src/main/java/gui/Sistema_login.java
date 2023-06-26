@@ -67,7 +67,6 @@ public class Sistema_login extends javax.swing.JFrame {
 
         txtArea.setBackground(new java.awt.Color(0, 48, 84));
         txtArea.setForeground(new java.awt.Color(255, 0, 0));
-        txtArea.setText("Verificación");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

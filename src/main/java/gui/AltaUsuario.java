@@ -2,12 +2,16 @@
 package gui;
 
 import java.util.List;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import logica.Controladora;
 import logica.Rol;
+import logica.Usuario;
 
 public class AltaUsuario extends javax.swing.JFrame {
 Controladora control;
+Usuario usr;
     /**
      * Creates new form AltaUsuario
      */
@@ -31,9 +35,10 @@ Controladora control;
         jLabel2 = new javax.swing.JLabel();
         cmbRol = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        txtAltaPass = new javax.swing.JTextField();
         txtAltaUser = new javax.swing.JTextField();
-        btnGuardar = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        txtAltaPass = new javax.swing.JPasswordField();
+        btnGuardar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -61,11 +66,21 @@ Controladora control;
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Rol");
 
-        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnGuardar.setText("Save");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        txtAltaPass.setText("jPasswordField1");
+
+        btnGuardar1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardar1.setText("Save");
+        btnGuardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardar1ActionPerformed(evt);
             }
         });
 
@@ -80,17 +95,24 @@ Controladora control;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAltaUser)
-                            .addComponent(txtAltaPass)
-                            .addComponent(cmbRol, 0, 183, Short.MAX_VALUE)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAltaUser)
+                                    .addComponent(cmbRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtAltaPass, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)))
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(193, Short.MAX_VALUE)
+                    .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(50, 50, 50)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,9 +131,14 @@ Controladora control;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(214, Short.MAX_VALUE)
+                    .addComponent(btnGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(16, 16, 16)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,38 +166,72 @@ Controladora control;
       txtAltaPass.setText("");
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String usuario=txtAltaUser.getText();
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+       PrincipalAdmin pAdmin=new PrincipalAdmin(control,usr);
+       pAdmin.setVisible(true);
+       pAdmin.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardar1ActionPerformed
+         String usuario=txtAltaUser.getText();
         String pass=txtAltaPass.getText();
         String rol= (String) cmbRol.getSelectedItem();
         
         control.crearUsuario(usuario,pass,rol);
+        txtAltaUser.setText("");
+        txtAltaPass.setText("");
         mostrarMensaje("User created successfuly","Info","Create User");
-        this.dispose();
-    }//GEN-LAST:event_btnGuardarActionPerformed
-public void mostrarMensaje(String mensaje,String tipo, String titulo){
+        cargarTabla();
+    }//GEN-LAST:event_btnGuardar1ActionPerformed
+ public void mostrarMensaje(String mensaje,String tipo, String titulo){
        JOptionPane optionPane=new JOptionPane(mensaje);
        if(tipo.equals("Info")){
            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
        }else if(tipo.equals("Error")){
             optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
        }
-            }
-  
+        JDialog dialog=optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+   }
+     private void cargarTabla() {
+     DefaultTableModel modelTable=new DefaultTableModel(){
+         @Override
+         public boolean isCellEditable(int row, int column){
+             return false;
+         }
+     };
+     
+     String titulo[]= {"Id","Usuario","Rol"};
+     modelTable.setColumnIdentifiers(titulo);
+         
+     //TRAER DE LA BD LA LISTA DE USUARIOS
+     List<Usuario> listaUsuario=control.traerUsuarios();
+     
+     if(listaUsuario!=null){
+         for(Usuario usu:listaUsuario){
+             Object[] objeto={
+                 usu.getId(),usu.getNomUsuario(),usu.getUnRol().getNombreRol()
+             };
+             modelTable.addRow(objeto);
+         }
+     }
+     }
     /**
      * @param args the command line arguments
      */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnGuardar1;
     private javax.swing.JComboBox<String> cmbRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtAltaPass;
+    private javax.swing.JPasswordField txtAltaPass;
     private javax.swing.JTextField txtAltaUser;
     // End of variables declaration//GEN-END:variables
 }

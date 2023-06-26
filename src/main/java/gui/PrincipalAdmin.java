@@ -194,6 +194,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.txtNombreUser.setText(usr.getNomUsuario());
+         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -240,15 +241,15 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                //Obtengo el id del elemento a eliminar
                int id_usuario=Integer.parseInt(String.valueOf(tblUser.getValueAt(tblUser.getSelectedRow(), 0)));
                //Llamar a la ventana de edición
-               EditarVentana editar=new EditarVentana(id_usuario);
+               EditarVentana editar=new EditarVentana(control,id_usuario);
                editar.setVisible(true);
                editar.setLocationRelativeTo(null);
                
            }else{
-               mostrarMensaje("Not selected any record","Error","Edit Wrong");
+               mostrarMensaje("Not selected any record","Error","Failed edit");
            }
        }else{
-            mostrarMensaje("Table is empty","Error","Edit wrong");
+            mostrarMensaje("Table is empty","Error","Failed Edit");
          }
          
        

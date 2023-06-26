@@ -53,22 +53,33 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel2" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" pref="81" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel2" min="-2" pref="81" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" min="-2" pref="81" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel4" min="-2" pref="29" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtAltaUser" max="32767" attributes="0"/>
+                                      <Component id="cmbRol" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtAltaPass" alignment="0" pref="183" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="jLabel4" min="-2" pref="29" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtAltaUser" max="32767" attributes="0"/>
-                              <Component id="txtAltaPass" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmbRol" alignment="0" pref="183" max="32767" attributes="0"/>
-                              <Component id="btnGuardar" alignment="1" min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="btnBack" min="-2" pref="112" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="40" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="193" max="32767" attributes="0"/>
+                      <Component id="btnGuardar1" min="-2" pref="112" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -92,9 +103,16 @@
                       <Component id="cmbRol" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
-                  <Component id="btnGuardar" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <Component id="btnBack" min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="214" max="32767" attributes="0"/>
+                      <Component id="btnGuardar1" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -157,11 +175,25 @@
             <Property name="text" type="java.lang.String" value="Rol"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtAltaPass">
-        </Component>
         <Component class="javax.swing.JTextField" name="txtAltaUser">
         </Component>
-        <Component class="javax.swing.JButton" name="btnGuardar">
+        <Component class="javax.swing.JButton" name="btnBack">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtAltaPass">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnGuardar1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -169,7 +201,7 @@
             <Property name="text" type="java.lang.String" value="Save"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardar1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

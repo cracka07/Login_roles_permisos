@@ -4,6 +4,7 @@ package gui;
 import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import logica.Controladora;
 import logica.Rol;
 import logica.Usuario;
@@ -21,9 +22,7 @@ Usuario user;
         this.control=control;
     }
 
-    EditarVentana(int id_usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -35,9 +34,10 @@ Usuario user;
         jLabel2 = new javax.swing.JLabel();
         cmbEditRol = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        txtEditPass = new javax.swing.JTextField();
         txtEditUser = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        txtEditPass = new javax.swing.JPasswordField();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -73,6 +73,16 @@ Usuario user;
             }
         });
 
+        txtEditPass.setText("jPasswordField1");
+
+        btnBack.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -83,8 +93,11 @@ Usuario user;
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -93,9 +106,9 @@ Usuario user;
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtEditPass)
                                     .addComponent(cmbEditRol, 0, 203, Short.MAX_VALUE)
-                                    .addComponent(txtEditUser))))))
+                                    .addComponent(txtEditUser)
+                                    .addComponent(txtEditPass))))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -116,7 +129,9 @@ Usuario user;
                     .addComponent(cmbEditRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
         );
 
@@ -140,8 +155,12 @@ Usuario user;
         String rol= (String) cmbEditRol.getSelectedItem();
 
         control.editarUsuario(user,usuario,pass,rol);
-        mostrarMensaje("User edited successfully","info","Edit User");
-         this.dispose();
+        txtEditUser.setText("");
+        txtEditPass.setText("");
+        mostrarMensaje("User edited successfuly","Info","Edit User");        
+        this.dispose();
+        
+        cargarTabla();
     }//GEN-LAST:event_btnGuardarActionPerformed
  public void mostrarMensaje(String mensaje,String tipo, String titulo){
        JOptionPane optionPane=new JOptionPane(mensaje);
@@ -175,11 +194,39 @@ Usuario user;
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+              PrincipalAdmin pAdmin=new PrincipalAdmin(control,user);
+       pAdmin.setVisible(true);
+       pAdmin.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnBackActionPerformed
     
 
-    
-
+      private void cargarTabla() {
+     DefaultTableModel modelTable=new DefaultTableModel(){
+         @Override
+         public boolean isCellEditable(int row, int column){
+             return false;
+         }
+     };
+     
+     String titulo[]= {"Id","Usuario","Rol"};
+     modelTable.setColumnIdentifiers(titulo);
+         
+     //TRAER DE LA BD LA LISTA DE USUARIOS
+     List<Usuario> listaUsuario=control.traerUsuarios();
+     
+     if(listaUsuario!=null){
+         for(Usuario usu:listaUsuario){
+             Object[] objeto={
+                 usu.getId(),usu.getNomUsuario(),usu.getUnRol().getNombreRol()
+             };
+             modelTable.addRow(objeto);
+         }
+     }
+      }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbEditRol;
     private javax.swing.JLabel jLabel1;
@@ -187,7 +234,7 @@ Usuario user;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtEditPass;
+    private javax.swing.JPasswordField txtEditPass;
     private javax.swing.JTextField txtEditUser;
     // End of variables declaration//GEN-END:variables
 }
